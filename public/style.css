@@ -1,0 +1,76 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.description {
+    margin: 2rem auto;
+    text-align: left;
+    max-width: 60rem;
+}
+
+h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    /* width: 8rem;  */
+
+}
+
+.header {
+
+    background-image: linear-gradient(to right bottom, 
+        rgb(0,0,0,0.5), rgb(100,100,100,0.5)),
+        url("img/war_room.png") ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: white;
+
+    font-family: Helvetica, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+    line-height: 2rem;
+    padding: 5rem;
+    text-align: center;
+}
+
+.form {
+    margin: 1rem;
+}
+
+.generate-button {
+    background-color: darkslategray;
+    border-radius: 4px;
+    color: white;
+    height: 2.3rem;
+    width: 6rem;
+    /* padding: auto; */
+}
+
+input {
+    line-height: 2rem;
+}
+
+/*
+.main {
+    padding: 1rem 1rem;
+    margin: 2rem 0;
+}
+*/
+
+.generated-text {
+    padding: 2rem 3rem;
+    margin: 1rem auto;
+    line-height: 1.5rem;
+    max-width: 80rem;
+}
+
+p {
+
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
