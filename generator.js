@@ -69,13 +69,21 @@ GenerateNewText.prototype.getRandomSentence = function() {
 GenerateNewText.prototype.getParagraph = function() {
   let paragraph = "";
   // Set the minimum number of words
-  let minimumCharacterLength = 250;
+  let minimumCharacterLength = 750;
   let firstSentence = true;
   while (paragraph.length < minimumCharacterLength) {
     if (firstSentence) {
       paragraph = paragraph.concat(this.getRandomSentence());
       firstSentence = false;
     } else {
+        let nextSentence = this.getRandomSentence();
+        // check if sentence already exists in paragraph
+        if (!paragraph.indexOf(nextSentence) === -1) {
+            console.log("Duplicate!");
+            continue;
+        } else {
+            paragraph.concat(" "+nextSentence);
+        }
       paragraph = paragraph.concat(" " + this.getRandomSentence());
     }
   }
@@ -94,7 +102,8 @@ GenerateNewText.prototype.getAllParagraphs = function(numberOfParagraphs) {
   allParagraphs.forEach(function (paragraph) {
     paragraphHTML += "<p>" + paragraph + "</p>";
   });
-  return paragraphHTML;
+  let returnValue = (numberOfParagraphs) ? paragraphHTML.slice(0,3) + "Nukem ipsum dolor sit amet. " + paragraphHTML.slice(3) : "";
+  return returnValue;
 }
 
 module.exports = nukemIpsum;
