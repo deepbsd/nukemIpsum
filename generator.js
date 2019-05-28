@@ -57,6 +57,8 @@ function GenerateNewText() {
 
 
    ];
+
+   console.log("How many sentences? ",this.sentences.length);
 }
 
 // Method to the GenerateNewText constructor function that generates a random sentence
@@ -66,11 +68,12 @@ GenerateNewText.prototype.getRandomSentence = function() {
 }
 
 // Method to the GenerateNewText constructor function that generates a paragraph from random sentences
-GenerateNewText.prototype.getParagraph = function() {
+GenerateNewText.prototype.getParagraph = function(bunchaText) {
   let paragraph = "";
   // Set the minimum number of words
   let minimumCharacterLength = 250;
   let firstSentence = true;
+  
   while (paragraph.length < minimumCharacterLength) {
     if (firstSentence) {
       paragraph = paragraph.concat(this.getRandomSentence());
@@ -78,7 +81,8 @@ GenerateNewText.prototype.getParagraph = function() {
     } else {
         let nextSentence = this.getRandomSentence();
         // check if sentence already exists in paragraph
-        if (!paragraph.indexOf(nextSentence) === -1) {
+        if ((!paragraph.indexOf(nextSentence === -1)) || (!bunchaText.indexOf(nextSentence === -1))) {
+        //if (!paragraph.indexOf(nextSentence === -1)) {
             console.log("Duplicate!");
             continue;
         } else {
@@ -95,13 +99,15 @@ GenerateNewText.prototype.getAllParagraphs = function(numberOfParagraphs) {
   let allParagraphs = [];
   // Generate the number of paragraphs as specified by the user
   while (allParagraphs.length < numberOfParagraphs) {
-    allParagraphs.push(this.getParagraph());
+    let bunchaText = allParagraphs.join(" : ");
+    allParagraphs.push(this.getParagraph(bunchaText));
   }
   // Convert array into HTML string
   let paragraphHTML = "";
   allParagraphs.forEach(function (paragraph) {
-    paragraphHTML += "<p>" + paragraph + "</p>";
+        paragraphHTML += "<p>" + paragraph + "</p>";
   });
+  // Only return 'Nukem ipsum ...' if numberOfParagraphs !== zero, otherwise return empty string
   let returnValue = (numberOfParagraphs) ? paragraphHTML.slice(0,3) + "Nukem ipsum dolor sit amet. " + paragraphHTML.slice(3) : "";
   return returnValue;
 }
