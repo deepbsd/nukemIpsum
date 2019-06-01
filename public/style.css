@@ -1,7 +1,19 @@
 * {
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
+
+.container {
+    border: 1px solid green;
+    padding: 9%;
+    width: 100%;
+    height: 220%;
+    background-image: linear-gradient(to bottom, red, yellow);
+    /* z-index: -3; */
+}
+
+
 
 .description {
     margin: 2rem auto;
@@ -18,6 +30,7 @@ h1 {
 
 .header {
 
+
     background-image: linear-gradient(to right bottom, 
         rgb(0,0,0,0.5), rgb(100,100,100,0.5)),
         url("img/war_room.png") ;
@@ -25,6 +38,7 @@ h1 {
     background-position: center;
     background-size: cover;
     color: white;
+    box-shadow: 12px 12px 18px rgb(35,22,22,0.8);
 
     font-family: Helvetica, sans-serif;
 
@@ -36,6 +50,8 @@ h1 {
     line-height: 2rem;
     padding: 5rem;
     text-align: center;
+    margin: 0 auto;
+    width: 80%;
 }
 
 .form {
@@ -55,12 +71,15 @@ input {
     line-height: 2rem;
 }
 
-/*
 .main {
-    padding: 1rem 1rem;
-    margin: 2rem 0;
+    border: 1px solid green;
+    background-color: white;
+    box-shadow: 12px 12px 18px rgb(35,22,22,0.8);
+    margin: 0 auto;
+    padding: 0 8%;
+    width: 80%;
+    
 }
-*/
 
 .generated-text {
     font-family: Geneva, sans-serif;
