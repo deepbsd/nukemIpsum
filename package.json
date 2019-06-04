@@ -1,15 +1,19 @@
 {
   "name": "nukem_ipsum",
   "version": "1.0.0",
-  "description": "",
+  "description": "Like Lorem Ipsum but with Cold War Tech",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "David S. Jackson <dsj@dsj.net>",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.0"
+  },
+  "engines": {
+      "node":"10.x"
   }
 }

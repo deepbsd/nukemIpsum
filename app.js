@@ -18,7 +18,8 @@ app.use(express.static('public'));
 app.use(routes);
 
 // Begin accepting connections to the specified port
-app.listen(port, () => {
+//app.listen(port, () => {
+app.listen(process.env.PORT || 8080, () => {
     // Display server location information to the console
     console.log(`Server is listening at http://${hostname}:${port}/`);
 })
