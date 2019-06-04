@@ -71,7 +71,7 @@ GenerateNewText.prototype.getRandomSentence = function() {
 GenerateNewText.prototype.getParagraph = function(bunchaText) {
   let paragraph = "";
   // Set the minimum number of words
-  let minimumCharacterLength = 150;
+  let minimumCharacterLength = 250;
   let firstSentence = true;
   
   while (paragraph.length < minimumCharacterLength) {
