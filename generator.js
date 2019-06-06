@@ -80,7 +80,7 @@ GenerateNewText.prototype.getParagraph = function(bunchaText) {
       firstSentence = false;
     } else {
         let nextSentence = this.getRandomSentence();
-        // check if sentence already exists in paragraph
+        // check if sentence already exists in paragraph: the second test is not working yet...
         if ((!paragraph.indexOf(nextSentence === -1)) || (!bunchaText.indexOf(nextSentence === -1))) {
         //if (!paragraph.indexOf(nextSentence === -1)) {
             console.log("Duplicate!");
