@@ -68,7 +68,7 @@ GenerateNewText.prototype.getRandomSentence = function() {
 }
 
 // Method to the GenerateNewText constructor function that generates a paragraph from random sentences
-GenerateNewText.prototype.getParagraph = function(bunchaText) {
+GenerateNewText.prototype.getParagraph = function(bunchaTextArr) {
   let paragraph = "";
   // Set the minimum number of words
   let minimumCharacterLength = 250;
@@ -80,11 +80,11 @@ GenerateNewText.prototype.getParagraph = function(bunchaText) {
       firstSentence = false;
     } else {
         let nextSentence = this.getRandomSentence();
-        // check if sentence already exists in paragraph: the second test is not working yet...
-        if ((!paragraph.indexOf(nextSentence === -1)) || (!bunchaText.indexOf(nextSentence === -1))) {
-        //if (!paragraph.indexOf(nextSentence === -1)) {
+        // check if sentence already exists in paragraph  (bunchaTextArr was supposed to be a
+        // 2nd test to remove duplicates in entire array.  Can't seem to make it work.)
+        if (paragraph.indexOf(nextSentence) > -1) {
             console.log("Duplicate!");
-            continue;
+            nextSentence = '';    
         } else {
             paragraph.concat(" "+nextSentence);
         }
@@ -99,8 +99,8 @@ GenerateNewText.prototype.getAllParagraphs = function(numberOfParagraphs) {
   let allParagraphs = [];
   // Generate the number of paragraphs as specified by the user
   while (allParagraphs.length < numberOfParagraphs) {
-    let bunchaText = allParagraphs.join(" : ");
-    allParagraphs.push(this.getParagraph(bunchaText));
+    let bunchaTextArr = [].concat(allParagraphs);
+    allParagraphs.push(this.getParagraph(bunchaTextArr));
   }
   // Convert array into HTML string
   let paragraphHTML = "";
