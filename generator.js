@@ -67,11 +67,13 @@ function GenerateNewText() {
 // Method to the GenerateNewText constructor function that generates a random sentence
 GenerateNewText.prototype.getRandomSentence = function() {
   let randomIndex = Math.floor(Math.random() * this.sentences.length);
+    // keeping track of index choices to avoid duplicate sentences in paragraphs...
     if (this.choices.indexOf(randomIndex) === -1) {
         this.choices.push(randomIndex);
         let randomSentence = this.sentences[randomIndex];
         return randomSentence;
     } else {
+        // if there's a duplicate, keep calling this function.
         return this.getRandomSentence();
     }
 }
