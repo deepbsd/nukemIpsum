@@ -5,6 +5,9 @@ const nukemIpsum = new GenerateNewText();
 
 // Constructor function that creates an object with the sentences property
 function GenerateNewText() {
+
+  this.choices = [];   // create this so we don't duplicate the sentences chosen
+
   // Add property to the object
   this.sentences =
     [
@@ -63,12 +66,18 @@ function GenerateNewText() {
 
 // Method to the GenerateNewText constructor function that generates a random sentence
 GenerateNewText.prototype.getRandomSentence = function() {
-  let randomSentence = this.sentences[Math.floor(Math.random() * this.sentences.length)]
-	return randomSentence;
+  let randomIndex = Math.floor(Math.random() * this.sentences.length);
+    if (this.choices.indexOf(randomIndex) === -1) {
+        this.choices.push(randomIndex);
+        let randomSentence = this.sentences[randomIndex];
+        return randomSentence;
+    } else {
+        return this.getRandomSentence();
+    }
 }
 
 // Method to the GenerateNewText constructor function that generates a paragraph from random sentences
-GenerateNewText.prototype.getParagraph = function(bunchaTextArr) {
+GenerateNewText.prototype.getParagraph = function() {
   let paragraph = "";
   // Set the minimum number of words
   let minimumCharacterLength = 250;
@@ -82,13 +91,15 @@ GenerateNewText.prototype.getParagraph = function(bunchaTextArr) {
         let nextSentence = this.getRandomSentence();
         // check if sentence already exists in paragraph  (bunchaTextArr was supposed to be a
         // 2nd test to remove duplicates in entire array.  Can't seem to make it work.)
-        if (paragraph.indexOf(nextSentence) > -1) {
-            console.log("Duplicate!");
-            nextSentence = '';    
-        } else {
-            paragraph.concat(" "+nextSentence);
-        }
-      paragraph = paragraph.concat(" " + this.getRandomSentence());
+        //
+        //if (paragraph.indexOf(nextSentence) > -1) {
+        //    console.log("Duplicate!");
+        //    nextSentence = '';    
+        //} else {
+        //    paragraph.concat(" "+nextSentence);
+        //}
+        //
+        paragraph = paragraph.concat(" " + this.getRandomSentence());
     }
   }
   return paragraph;
@@ -99,9 +110,11 @@ GenerateNewText.prototype.getAllParagraphs = function(numberOfParagraphs) {
   let allParagraphs = [];
   // Generate the number of paragraphs as specified by the user
   while (allParagraphs.length < numberOfParagraphs) {
-    let bunchaTextArr = [].concat(allParagraphs);
-    allParagraphs.push(this.getParagraph(bunchaTextArr));
+    //let bunchaTextArr = [].concat(allParagraphs);
+    //allParagraphs.push(this.getParagraph(bunchaTextArr));
+    allParagraphs.push(this.getParagraph());
   }
+  this.choices = [];   // reset choices
   // Convert array into HTML string
   let paragraphHTML = "";
   allParagraphs.forEach(function (paragraph) {
