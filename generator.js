@@ -91,16 +91,6 @@ GenerateNewText.prototype.getParagraph = function() {
       firstSentence = false;
     } else {
         let nextSentence = this.getRandomSentence();
-        // check if sentence already exists in paragraph  (bunchaTextArr was supposed to be a
-        // 2nd test to remove duplicates in entire array.  Can't seem to make it work.)
-        //
-        //if (paragraph.indexOf(nextSentence) > -1) {
-        //    console.log("Duplicate!");
-        //    nextSentence = '';    
-        //} else {
-        //    paragraph.concat(" "+nextSentence);
-        //}
-        //
         paragraph = paragraph.concat(" " + this.getRandomSentence());
     }
   }
